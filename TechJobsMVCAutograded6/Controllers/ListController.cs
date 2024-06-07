@@ -22,7 +22,7 @@ public class ListController : Controller
         };
     internal static Dictionary<string, List<JobField>> TableChoices = new Dictionary<string, List<JobField>>()
         {
-            //{"all", "View All"},
+            // {"all", "View All"},
             {"employer", JobData.GetAllEmployers()},
             {"location", JobData.GetAllLocations()},
             {"positionType", JobData.GetAllPositionTypes()},
@@ -44,7 +44,15 @@ public class ListController : Controller
     // TODO #2 - Complete the Jobs action method
     public IActionResult Jobs(string column, string value)
     {
-        return View();
+        List<string> jobs = new();
+        if (column == "All")
+        {
+        jobs.Add(value);
+        ViewBag.title = column;
+        }
+
+        ViewBag.jobs = jobs;
+        return View("Index", jobs);
     }
 }
 
