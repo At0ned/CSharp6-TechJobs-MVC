@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TechJobsMVCAutograded6.Data;
@@ -44,15 +45,35 @@ public class ListController : Controller
     // TODO #2 - Complete the Jobs action method
     public IActionResult Jobs(string column, string value)
     {
-        List<string> jobs = new();
+        List<Job> jobs = new();
+        
         if (column == "All")
         {
-        jobs.Add(value);
+        jobs = JobData.FindAll();
         ViewBag.title = column;
         }
-
+        else if (column == "employer")
+        {
+            jobs = JobData.FindByColumnAndValue(column, value);
+            ViewBag.title = column;
+        }
+        else if (column == "location")
+        {
+            jobs = JobData.FindByColumnAndValue(column, value);
+            ViewBag.title = column;
+        }
+        else if (column == "positionType")
+        {
+            jobs = JobData.FindByColumnAndValue(column, value);
+            ViewBag.title = column;
+        }
+        else if (column == "coreCompetency")
+        {
+            jobs = JobData.FindByColumnAndValue(column, value);
+            ViewBag.title = column;
+        }
         ViewBag.jobs = jobs;
-        return View("Index", jobs);
+        return View("Jobs");
     }
 }
 
