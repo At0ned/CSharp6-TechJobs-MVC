@@ -52,26 +52,12 @@ public class ListController : Controller
         jobs = JobData.FindAll();
         ViewBag.title = column;
         }
-        else if (column == "employer")
+        else 
         {
             jobs = JobData.FindByColumnAndValue(column, value);
             ViewBag.title = column;
         }
-        else if (column == "location")
-        {
-            jobs = JobData.FindByColumnAndValue(column, value);
-            ViewBag.title = column;
-        }
-        else if (column == "positionType")
-        {
-            jobs = JobData.FindByColumnAndValue(column, value);
-            ViewBag.title = column;
-        }
-        else if (column == "coreCompetency")
-        {
-            jobs = JobData.FindByColumnAndValue(column, value);
-            ViewBag.title = column;
-        }
+        
         ViewBag.jobs = jobs;
         return View("Jobs");
     }
