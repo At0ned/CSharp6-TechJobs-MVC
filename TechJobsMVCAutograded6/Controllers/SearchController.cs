@@ -22,7 +22,7 @@ public class SearchController : Controller
     public IActionResult Results(string searchType, string searchTerm)
     {
         List<Job> jobs = new();
-        if (searchType == "all" || searchType == "")
+        if (searchTerm == "all" || searchTerm == "")
         {
         jobs = JobData.FindAll();
         }
@@ -32,8 +32,9 @@ public class SearchController : Controller
 
         }
         ViewBag.columns = ListController.ColumnChoices;
+        ViewBag.jobs = jobs;
 
-        return View("Index", jobs);
+        return View("Index");
     }
 }
 
